@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="93c57115-a480-4b3a-a6c8-14693672cb58">
+	<property name="ireport.zoom" value="1.4641000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="krw" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     reimbursement.`id_reimburse` AS reimbursement_id_reimburse,
+     reimbursement.`id_karyawan` AS reimbursement_id_karyawan,
+     reimbursement.`kegiatan` AS reimbursement_kegiatan,
+     reimbursement.`biaya` AS reimbursement_biaya,
+     karyawan.`nama_karyawan` AS karyawan_nama_karyawan,
+     karyawan.`jabatan` AS karyawan_jabatan,
+     karyawan.`id_karyawan` AS karyawan_id_karyawan
+FROM
+    reimbursement INNER JOIN karyawan ON reimbursement.id_karyawan = karyawan.id_karyawan
+WHERE
+     karyawan.id_karyawan = $P{krw}]]>
+	</queryString>
+	<field name="reimbursement_id_reimburse" class="java.lang.String"/>
+	<field name="reimbursement_id_karyawan" class="java.lang.String"/>
+	<field name="reimbursement_kegiatan" class="java.lang.String"/>
+	<field name="reimbursement_biaya" class="java.lang.Integer"/>
+	<field name="karyawan_nama_karyawan" class="java.lang.String"/>
+	<field name="karyawan_jabatan" class="java.lang.String"/>
+	<field name="karyawan_id_karyawan" class="java.lang.String"/>
+	<variable name="reimbursement_biaya_1" class="java.lang.Integer" resetType="Page" calculation="Sum">
+		<variableExpression><![CDATA[$F{reimbursement_biaya}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement uuid="784fbeb7-1a55-46d2-a253-fdfb5f5b936a" x="0" y="0" width="555" height="79"/>
+				<imageExpression><![CDATA["C:\\Users\\lazua\\Documents\\NetBeansProjects\\TA\\src\\ta\\img\\kop Surat 1.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="72" splitType="Stretch">
+			<textField>
+				<reportElement uuid="717684c1-17f9-40af-9b50-cdaf61f51cd4" x="10" y="10" width="150" height="25"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{karyawan_nama_karyawan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6aef68c3-3dac-4dd6-93b5-8956f149b908" x="10" y="35" width="150" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{karyawan_jabatan}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="bbf62231-adde-497c-8824-de37b95b60ef" x="445" y="15" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("EEEE, dd MMMMM yyyy",new java.util.Locale("id")).format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7f695437-4f8f-4d1c-ba65-5cc8e74eec08" x="445" y="35" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{karyawan_id_karyawan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9fa02a06-760f-4637-b637-a9ad2ace70b2" x="345" y="15" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jakarta,  ]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="43" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="b204c4a8-828b-4461-b1a5-b76d15686ea1" x="0" y="0" width="46" height="43"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b204c4a8-828b-4461-b1a5-b76d15686ea1" x="46" y="0" width="380" height="43"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b204c4a8-828b-4461-b1a5-b76d15686ea1" x="426" y="0" width="129" height="43"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="3d75e729-59ec-4cf0-bd2f-0e77037701a3" x="10" y="11" width="26" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0dee461f-ac02-442b-8ff0-4b1fb7364921" x="56" y="11" width="360" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kegiatan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="39522970-e1e4-4a0a-9adb-a394d6a9c353" x="436" y="11" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Biaya]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="b204c4a8-828b-4461-b1a5-b76d15686ea1" x="0" y="0" width="46" height="46"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b204c4a8-828b-4461-b1a5-b76d15686ea1" x="46" y="0" width="380" height="46"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="b204c4a8-828b-4461-b1a5-b76d15686ea1" x="426" y="0" width="129" height="46"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="62b1a6d6-fa42-4900-b22f-44ec6d4643d7" x="10" y="13" width="26" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c41683fd-7e83-44fe-8749-3f2be16dbb59" x="56" y="13" width="360" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{reimbursement_kegiatan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ba4efb3-9f97-47bb-954d-1a7e62137188" x="463" y="13" width="73" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{reimbursement_biaya}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="806854cf-573d-4606-8455-ce205a265a2b" x="436" y="13" width="27" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="161" splitType="Stretch">
+			<textField>
+				<reportElement uuid="45cccdfa-7ae3-4d12-a793-37d176f24ab7" x="10" y="131" width="129" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{karyawan_nama_karyawan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ce3ad7f2-3687-4fab-a92c-1fa7cf2467de" x="445" y="131" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Ria Putri Rahmadani]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="69734ef9-9614-4ee4-9c53-eb7b40340a32" x="445" y="10" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[General Manager]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="4314f9d8-2e0a-4b44-bf8e-e506e2ad8179" x="10" y="10" width="129" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isItalic="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{karyawan_jabatan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="8105fd70-3782-4557-867f-9f6c25324f18" x="0" y="0" width="426" height="54"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8105fd70-3782-4557-867f-9f6c25324f18" x="426" y="0" width="129" height="54"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="4e15038b-1274-4b84-b3f3-b0c88267008c" x="56" y="17" width="360" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="806854cf-573d-4606-8455-ce205a265a2b" x="436" y="17" width="27" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Rp.]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="faa8a950-737d-40a3-bd97-0583c9becd79" x="463" y="17" width="73" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true" isItalic="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{reimbursement_biaya_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
